@@ -33,3 +33,4 @@ while(1):
     if cv2.waitKey(20) & 0xFF == 27:
         break
 cv2.destroyAllWindows()
+#
