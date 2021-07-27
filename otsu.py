@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-
+import time
+start = time.time()
 img = cv2.imread('test14.jpg', 0)
 # global thresholding
 ret1, th1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
@@ -27,4 +28,6 @@ for i in range(3):
     plt.title(titles[i*3+1]), plt.xticks([]), plt.yticks([])
     plt.subplot(3, 3, i*3+3), plt.imshow(images[i*3+2], 'gray')
     plt.title(titles[i*3+2]), plt.xticks([]), plt.yticks([])
+end = time.time()
+print("執行時間：%f 秒" % (end - start))
 plt.show()
