@@ -5,9 +5,6 @@ from matplotlib import pyplot as plt
 kernel = np.ones((5, 5), np.uint8)
 img = cv.imread('./sky.jpg', 0)
 ret3, th3 = cv.threshold(img, 0, 255, cv.THRESH_TOZERO+cv.THRESH_OTSU)
-roi = th3[200:400, 400:800]
-gauss = cv.GaussianBlur(roi, (13, 13), 3)
-th3[200:400, 400:800] = gauss
 erosion = cv.erode(th3, kernel, iterations=1)
 dilation = cv.dilate(th3, kernel, iterations=1)
 gradient = cv.morphologyEx(img, cv.MORPH_GRADIENT, kernel)
@@ -16,7 +13,6 @@ gradient = cv.morphologyEx(img, cv.MORPH_GRADIENT, kernel)
 # th3[200:400,400:800]=gauss
 cv.imshow('img', img)
 cv.imshow('th3', th3)
-cv.imshow('gauss', gauss)
 cv.imshow('gauss', erosion)
 cv.imshow('dilation', dilation)
 cv.imshow('gradient', gradient)
